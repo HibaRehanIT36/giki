@@ -2,13 +2,14 @@ import React from "react";
 import { Box } from "@chakra-ui/react";
 import GenericSelect from "../../../components/GenericSelect";
 import { getLanguages, getRegsions } from "../../../utils";
-import { useSetRecoilState } from "recoil";
+import { useRecoilState } from "recoil";
 import { userInformationAtom } from "../../../state/atoms";
 
 const Body = () => {
   const regsionOptions = getRegsions();
   const languagesOptions = getLanguages();
-  const setUserInformation = useSetRecoilState(userInformationAtom);
+  const [userInformation , setUserInformation] = useRecoilState(userInformationAtom);
+
   return (
     <Box
       display="flex"
@@ -22,6 +23,7 @@ const Body = () => {
       <GenericSelect
         options={languagesOptions}
         selectProps={{
+          value:userInformation.language as string,
           onChange: (e) => {
             setUserInformation((prevUserInformation) => ({
               ...prevUserInformation,
@@ -33,6 +35,7 @@ const Body = () => {
       <GenericSelect
         options={regsionOptions}
         selectProps={{
+          value:userInformation.region as string,
           onChange: (e) => {
             setUserInformation((prevUserInformation) => ({
               ...prevUserInformation,
