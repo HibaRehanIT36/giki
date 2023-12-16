@@ -9,7 +9,8 @@ const Header = () => {
       textAlign="center"
       color="brand.secondary"
       fontFamily="Poppins"
-      paddingX={"100px"}
+      maxW="300px"
+      alignSelf="center"
     >
       Tell us what you’re interested in
     </Text>
